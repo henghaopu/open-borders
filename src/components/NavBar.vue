@@ -1,0 +1,36 @@
+<template>
+    <nav class="light-blue darken-1 my-nav">
+        <a href="" class="brand-logo left">Open Borders</a>
+        <ul class="right">
+            <li><a href="">Sign Up</a></li>
+            <li><a href="">Log In</a></li>
+        </ul>
+    </nav>
+</template>
+
+
+<script>
+export default {
+    name: 'NavBar',
+    data() {
+        return {
+            
+        }
+    },
+}
+</script>
+
+<style>
+/* On screens that are 320px wide or less */
+@media screen and (max-width: 320px) {
+    .my-nav > a {
+        font-size: 1.5rem;        
+    }
+}
+/* On screens that are 1024px wide or more */
+@media screen and (min-width: 1024px) {
+    .my-nav > a {
+        padding-left: 1rem;
+    }
+}
+</style>
