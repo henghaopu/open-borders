@@ -1,5 +1,5 @@
 <template>
-    <nav class="light-blue darken-1 my-nav">
+    <nav class="my-nav">
         <a href="" class="brand-logo left">Open Borders</a>
         <ul class="right">
             <li><a href="">Sign Up</a></li>
@@ -21,6 +21,13 @@ export default {
 </script>
 
 <style>
+nav {
+    background-color: hsla(55, 100%, 95%, 1); 
+}
+.my-nav a {
+    color: #039be5;
+
+}
 /* On screens that are 320px wide or less */
 @media screen and (max-width: 320px) {
     .my-nav > a {
