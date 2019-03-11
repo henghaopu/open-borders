@@ -1,10 +1,10 @@
 <template>
     <nav class="my-nav">
-        <a href="" class="brand-logo left">Open Borders</a>
+        <router-link :to="{ name: 'map' }" class="brand-logo left">Open Borders</router-link>
         <ul class="right">
             <!-- named route -->
-            <li><router-link :to="{name: 'signup'}">Sign Up</router-link></li>
-            <li><router-link :to="{name: 'login'}">Log In</router-link></li>
+            <li><router-link :to="{ name: 'signup' }">Sign Up</router-link></li>
+            <li><router-link :to="{ name: 'login' }">Log In</router-link></li>
             <li><a @click="logout">Log Out</a></li>
         </ul>
     </nav>
