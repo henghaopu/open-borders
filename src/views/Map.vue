@@ -21,8 +21,10 @@ export default {
      * We can't do this in the created hook because it's not mounted the DOM yet. But, we can do it in the mounted hook
      */
     mounted() {
-        this.renderMap()
-        console.log(firebase.auth().currentUser)
+        // get user geolcation
+        this.getCurrentLocation()
+        // this.renderMap()
+        // console.log(firebase.auth().currentUser)
     },
     methods: {
         renderMap() {
@@ -36,16 +38,22 @@ export default {
                 streetViewControl: false
             })
         },
-        // getCurrentLocation() {
-        //     if (navigator.geolocation) {
-        //         navigator.geolocation.getCurrentPosition(position => {
-        //             this.lat = position.coords.latitude
-        //             this.lng = position.coords.longitude
-        //         })
-        //     } else {
-        //         console.log("Geolocation is not supported by this browser.")
-        //     }
-        // }
+        getCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    this.lat = position.coords.latitude
+                    this.lng = position.coords.longitude
+                    this.renderMap()
+                }, (err) => {
+                    console.log(err)
+                    this.renderMap()
+                }, { maximumAge: 60000, timeout: 3000 })
+            } else {
+                console.log("Geolocation is not supported by this browser.")
+                // position center by default values
+                this.renderMap()
+            }
+        }
     }
 }
 </script>
