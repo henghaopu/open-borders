@@ -4,13 +4,15 @@
         <ul class="right">
             <!-- named route -->
             <li><router-link :to="{name: 'signup'}">Sign Up</router-link></li>
-            <li><a href="">Log In</a></li>
+            <li><router-link :to="{name: 'login'}">Log In</router-link></li>
+            <li><a @click="logout">Log Out</a></li>
         </ul>
     </nav>
 </template>
 
 
 <script>
+import firebase from 'firebase'
 export default {
     name: 'NavBar',
     data() {
@@ -18,6 +20,13 @@ export default {
             
         }
     },
+    methods: {
+        logout() {
+            firebase.auth().signOut().then(() => {
+                this.$router.push({ name: 'login'})
+            })
+        }
+    }
 }
 </script>
 
