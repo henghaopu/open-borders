@@ -2,7 +2,8 @@
     <nav class="my-nav">
         <a href="" class="brand-logo left">Open Borders</a>
         <ul class="right">
-            <li><a href="">Sign Up</a></li>
+            <!-- named route -->
+            <li><router-link :to="{name: 'signup'}">Sign Up</router-link></li>
             <li><a href="">Log In</a></li>
         </ul>
     </nav>
