@@ -3,21 +3,22 @@
         <router-link :to="{ name: 'map' }" class="brand-logo left">Open Borders</router-link>
         <ul class="right">
             <!-- named route -->
-            <li><router-link :to="{ name: 'signup' }">Sign Up</router-link></li>
-            <li><router-link :to="{ name: 'login' }">Log In</router-link></li>
-            <li><a @click="logout">Log Out</a></li>
+            <li v-if="!user"><router-link :to="{ name: 'signup' }">Sign Up</router-link></li>
+            <li v-if="!user"><router-link :to="{ name: 'login' }">Log In</router-link></li>
+            <li v-if="user"><a>{{user.email}}</a></li>
+            <li v-if="user"><a @click="logout">Log Out</a></li>
         </ul>
     </nav>
 </template>
 
-
 <script>
 import firebase from 'firebase'
+
 export default {
     name: 'NavBar',
     data() {
         return {
-            
+            user: null
         }
     },
     methods: {
@@ -26,6 +27,17 @@ export default {
                 this.$router.push({ name: 'login'})
             })
         }
+    },
+    created() {
+        firebase.auth().onAuthStateChanged( (user) => {
+            // logged in
+            if (user) {
+                this.user = user
+                console.log(user)
+            } else {
+                this.user = null
+            }
+        })
     }
 }
 </script>
