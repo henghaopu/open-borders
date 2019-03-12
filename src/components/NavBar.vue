@@ -5,7 +5,7 @@
             <!-- named route -->
             <li v-if="!user"><router-link :to="{ name: 'signup' }">Sign Up</router-link></li>
             <li v-if="!user"><router-link :to="{ name: 'login' }">Log In</router-link></li>
-            <li v-if="user"><a>{{user.email}}</a></li>
+            <li v-if="user"><a>{{user.email.substring(0, user.email.indexOf('@'))}}</a></li>
             <li v-if="user"><a @click="logout">Log Out</a></li>
         </ul>
     </nav>
