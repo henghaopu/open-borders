@@ -33,7 +33,7 @@ export default {
             // logged in
             if (user) {
                 this.user = user
-                console.log(user)
+                // console.log(user)
             } else {
                 this.user = null
             }

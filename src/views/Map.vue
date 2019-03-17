@@ -52,7 +52,8 @@ export default {
                         })
                         // add click event to marker
                         marker.addListener('click', () => {
-                            console.log(doc.id)
+                            // console.log(doc.id)
+                            this.$router.push({name: 'userprofile', params: {id: doc.id}})
                         })
                     }
                 })
